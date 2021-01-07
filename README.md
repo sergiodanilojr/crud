@@ -25,7 +25,7 @@ CRUD é uma abstração para simplificar a leitura, escrita, atualização e rem
 
 ###### BEFORE INSTALL!
 
-For you work with this component, is important work with a component like vlucas/dotenv for you set your enviroment variables;
+For you work with this component, is important work with a component like ````bash vlucas/dotenv```` for you set your enviroment variables;
 
 ````dotenv
 DB_HOST="your_database_host"
