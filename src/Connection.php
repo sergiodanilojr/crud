@@ -76,6 +76,7 @@ class Connection
         self::$configs->password = getenv('DB_PASSWORD');
         self::$configs->name = getenv('DB_NAME');
         self::$configs->driver = getenv('DB_DRIVER');
+        self::$configs->port = getenv('DB_PORT');
 
         return self::$configs;
     }
