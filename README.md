@@ -28,6 +28,8 @@ CRUD é uma abstração para simplificar a leitura, escrita, atualização e rem
 For you work with this component, is important work with a component like ````bash vlucas/dotenv```` for you set your enviroment variables;
 
 ````dotenv
+DB_DRIVER="mysql"
+DB_PORT="3306"
 DB_HOST="your_database_host"
 DB_USER="root"
 DB_PASSWORD="passworddb"

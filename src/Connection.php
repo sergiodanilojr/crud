@@ -50,7 +50,7 @@ class Connection
             try {
                 $config = self::getConfig();
                 self::$instance = new \PDO(
-                    "mysql:host={$config->host};dbname={$config->name}",
+                    "{$config->driver}:host={$config->host};dbname={$config->name}",
                     $config->user,
                     $config->password,
                     self::OPTIONS
@@ -75,6 +75,7 @@ class Connection
         self::$configs->user = getenv('DB_USER');
         self::$configs->password = getenv('DB_PASSWORD');
         self::$configs->name = getenv('DB_NAME');
+        self::$configs->driver = getenv('DB_DRIVER');
 
         return self::$configs;
     }
