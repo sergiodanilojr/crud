@@ -75,7 +75,7 @@ $update = $crud->update($arrayWithData, "gender = 'male'");
 $delete = $crud->delete("id = :id", "id=1");
 
 /* Setting Params with CRUD Class */
-$params = "gender = :gender";
+$params = "gender=male";
 $crud->setParams($params);
 
 /* DEBUGGING :: For you identify your Query*/
