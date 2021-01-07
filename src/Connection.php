@@ -50,7 +50,7 @@ class Connection
             try {
                 $config = self::getConfig();
                 self::$instance = new \PDO(
-                    "{$config->driver}:host={$config->host};dbname={$config->name}",
+                    "{$config->driver}:host={$config->host};dbname={$config->name};port={$config->port}",
                     $config->user,
                     $config->password,
                     self::OPTIONS
