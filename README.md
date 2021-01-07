@@ -14,8 +14,6 @@ CRUD is a abstraction of PDO to simplify reading, writing, updating and removing
 
 CRUD é uma abstração para simplificar a leitura, escrita, atualização e remoção de dados do Banco de Dados.
 
-###### NOTE: However CRUD just work currently with MySQL Driver, because a BETA Version. Soon it'll work with others drivers.
-
 ### Highlights
 
 - Extremaly Easy
