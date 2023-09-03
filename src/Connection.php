@@ -2,82 +2,40 @@
 
 namespace ElePHPant;
 
-/**
- * Class Connection
- */
+
 class Connection
 {
-    /**
-     *
-     */
-    private const OPTIONS = [
-        \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-        \PDO::ATTR_CASE => \PDO::CASE_NATURAL
-    ];
 
-    /**
-     * @var
-     */
-    private static $instance;
-    /**
-     * @var
-     */
-    private static $configs;
+    private static ?\PDO $instance = null;
 
-    /**
-     * Connection constructor.
-     */
-    final private function __construct()
+    private function __construct()
     {
 
     }
 
-    /**
-     *
-     */
-    final private function __clone()
+    private function __clone()
     {
+
     }
 
-    /**
-     * @return \PDO|null
-     */
-    public static function getInstance(): ?\PDO
+    public static function instance(string $dsn, string $user, string $password, ?array $options): \PDO
     {
-        if (empty(self::$instance)) {
-            try {
-                $config = self::getConfig();
-                self::$instance = new \PDO(
-                    "{$config->driver}:host={$config->host};dbname={$config->name};port={$config->port}",
-                    $config->user,
-                    $config->password,
-                    self::OPTIONS
-                );
-
-            } catch (\PDOException $exception) {
-                return null;
-            }
-
+        if (!self::$instance) {
+            self::$instance = self::connection(
+                $dsn, $user, $password, (!empty($options)?$options:null)
+            );
         }
+
         return self::$instance;
     }
 
-
-    /**
-     * @return object
-     */
-    private static function getConfig(): object
+    private static function connection(string $dsn, string $user, string $password, ?array $options): \PDO
     {
-        self::$configs = new \stdClass();
-        self::$configs->host = getenv('DB_HOST');
-        self::$configs->user = getenv('DB_USER');
-        self::$configs->password = getenv('DB_PASSWORD');
-        self::$configs->name = getenv('DB_NAME');
-        self::$configs->driver = getenv('DB_DRIVER');
-        self::$configs->port = getenv('DB_PORT');
-
-        return self::$configs;
+        return new \PDO(
+            $dsn,
+            $user,
+            $password,
+            $options
+        );
     }
 }
