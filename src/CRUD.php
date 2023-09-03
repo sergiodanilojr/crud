@@ -34,7 +34,7 @@ class CRUD
      */
     private $table;
 
-    private static ?\PDO $instance;
+    private static ?\PDO $instance = null;
 
     public static function bootstrap(array $config)
     {
